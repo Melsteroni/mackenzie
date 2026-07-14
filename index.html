@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Final Clue</title>
+    <title>Hello</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +16,7 @@
     <div class="atmosphere" aria-hidden="true"></div>
 
     <main class="stage">
-      <p class="brand">The Final Clue</p>
+      <p id="brand" class="brand">Hello</p>
 
       <section id="gate" class="panel" aria-live="polite">
         <h1 class="headline">Enter the password</h1>
@@ -29,9 +29,12 @@
           <input
             id="password"
             name="password"
-            type="password"
+            type="text"
             class="password-input"
-            placeholder="••••••••"
+            placeholder="Type the password"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
             required
             autofocus
           />
@@ -41,10 +44,7 @@
       </section>
 
       <section id="success" class="panel success" hidden>
-        <h1 class="headline">You’re in.</h1>
-        <p class="lede success-message">
-          Congratulations — you will receive a letter shortly.
-        </p>
+        <p class="lede success-message">You will receive a letter shortly.</p>
       </section>
     </main>
 
