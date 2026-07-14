@@ -1,39 +1,34 @@
-# The Final Clue
+# Mackenzie scavenger hunt
 
-A GitHub Pages scavenger-hunt page: enter password `hangry`, see a congratulations message, and notify `melanie.frazier@gmail.com` by email.
+GitHub Pages page: enter password `hangry`, see congratulations, and email `melanie.frazier@gmail.com`.
+
+## Email setup (required once)
+
+GitHub Pages can’t send mail itself. We use free [Web3Forms](https://web3forms.com/).
+
+1. Open **[https://web3forms.com/](https://web3forms.com/)**.
+2. Enter **melanie.frazier@gmail.com** and create an access key.
+3. Check that inbox (and Spam) for the Web3Forms email — copy the **access key**.
+4. Open `script.js` and replace `PASTE_YOUR_ACCESS_KEY_HERE` with your key (keep the quotes).
+5. Commit and push so the live site picks it up.
+6. Enter `hangry` on the live site once to confirm you get the alert email.
 
 ## How it works
 
 | Piece | Where it runs |
 | --- | --- |
-| Password check + success message | In the browser (static HTML/JS on GitHub Pages) |
-| Email alert | [FormSubmit](https://formsubmit.co) (free third-party — Pages can’t send mail itself) |
+| Password check + success message | Browser (static site on GitHub Pages) |
+| Email alert | [Web3Forms](https://web3forms.com/) |
 
-**Note:** The password lives in `script.js`, so anyone who views the page source can see it. That’s fine for a scavenger hunt where the real challenge is finding the clue offline.
+**Note:** The password is in `script.js` (viewable in page source). Fine for a scavenger hunt.
 
-## One-time email setup
+## Live site
 
-1. Open the live site and enter the correct password once.
-2. Check **melanie.frazier@gmail.com** for a FormSubmit confirmation email.
-3. Click the confirmation link.
-4. After that, every correct guess sends a notification email.
+[https://melsteroni.github.io/mackenzie/](https://melsteroni.github.io/mackenzie/)
 
-## Publish on GitHub Pages
-
-1. Create a new GitHub repository (or use this folder as the repo root).
-2. Push these files to the `main` branch.
-3. In the repo: **Settings → Pages**.
-4. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-5. Choose branch `main` and folder `/ (root)`, then Save.
-6. After a minute or two, the site will be at:
-
-   `https://<your-username>.github.io/<repo-name>/`
-
-   If the repo is named `<your-username>.github.io`, it will be at `https://<your-username>.github.io/`.
+Pages source: repo **Settings → Pages** → branch `main` / `/ (root)`.
 
 ## Preview locally
-
-Open `index.html` in a browser, or from this folder run:
 
 ```bash
 python3 -m http.server 8000
