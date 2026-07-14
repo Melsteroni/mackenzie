@@ -1,0 +1,231 @@
+:root {
+  --ink: #0f2a2e;
+  --ink-soft: #1a3d42;
+  --fog: #d8ebe6;
+  --mist: #a8c9c2;
+  --amber: #c9783a;
+  --amber-deep: #a55e28;
+  --cream: #eef6f3;
+  --error: #b83a2e;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--cream);
+  background: var(--ink);
+  overflow-x: hidden;
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, #2a5a55 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, #3d4a28 0%, transparent 50%),
+    radial-gradient(ellipse 40% 35% at 10% 70%, #1e4a52 0%, transparent 45%),
+    linear-gradient(165deg, #0c2226 0%, #14363b 45%, #0f2a2e 100%);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  to {
+    filter: hue-rotate(8deg) brightness(1.05);
+  }
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1.5rem 3.5rem;
+  text-align: center;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 8vw, 5rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin: 0 0 1.75rem;
+  color: var(--fog);
+  animation: rise 0.9s ease-out both;
+}
+
+.panel {
+  max-width: 28rem;
+  width: 100%;
+  animation: rise 0.9s ease-out 0.15s both;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4vw, 2.15rem);
+  font-weight: 500;
+  margin: 0 0 0.65rem;
+  color: var(--cream);
+}
+
+.lede {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--mist);
+  font-weight: 400;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  text-align: left;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+.password-input {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(168, 201, 194, 0.35);
+  border-radius: 2px;
+  background: rgba(15, 42, 46, 0.55);
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.password-input::placeholder {
+  color: rgba(168, 201, 194, 0.45);
+}
+
+.password-input:focus {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(201, 120, 58, 0.2);
+}
+
+.submit-btn {
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.25rem;
+  border: none;
+  border-radius: 2px;
+  background: var(--amber);
+  color: #1a1208;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: var(--amber-deep);
+  color: var(--cream);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.error {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: #f0a8a0;
+  animation: shake 0.4s ease;
+}
+
+.success .headline {
+  color: var(--fog);
+}
+
+.success-message {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--cream);
+  margin-bottom: 0;
+  animation: rise 0.8s ease-out 0.2s both;
+}
+
+.success {
+  animation: rise 0.85s ease-out both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .stage {
+    padding: 2rem 1.15rem 2.5rem;
+    justify-content: flex-start;
+    padding-top: 18vh;
+  }
+}
